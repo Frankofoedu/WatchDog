@@ -67,10 +67,12 @@ namespace WatchDog
                 RequestPath = new PathString("/WTCHDGstatics")
             });
 
-            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapHub<LoggerHub>("/wtchdlogger");
             });
 
